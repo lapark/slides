@@ -1,0 +1,360 @@
+plot(x,y)
+plot(abs(fft(y)))
+plot(abs(fft(y)), type="l")
+y = exp(-(x-1)^2)
+fz = abs(fft(y))
+plot(fz)
+y = exp(-(x-3)^2) + exp(-(x+3)^2)
+plot(abs(fft(y)), type="l")
+ifft(abs(fft(y))*fz)
+?fft
+fft(abs(fft(y))*fz, inverse=TRUE)
+plot(fft(abs(fft(y))*fz, inverse=TRUE))
+plot(Re(fft(abs(fft(y))*fz, inverse=TRUE)))
+y = exp(-(x-3)^2)
+plot(Re(fft(abs(fft(y))*fz, inverse=TRUE)))
+helix <- function(t, a, b) {#
+  return(list(x = a*cos(t), y = a*sin(t), z = b*t))#
+}
+a = 1
+b = 2
+helix(1:100, a, b)
+library(lattice)
+data = helix(1:100, a, b)
+wireframe(data$z ~ data$x * data$y)
+?persp
+persp(data$x,data$y,data$z)
+library(scatterplot3d)
+install.packages(scatterplot3d)
+install.packages('scatterplot3d')
+library(scatterplot3d)
+?scatterplot3d
+scatterplot3d(data$x,data$y,data$z)
+scatterplot3d(data$x,data$y,data$z, type="l")
+data = helix(1:20, a, b)
+scatterplot3d(data$x,data$y,data$z, type="l")
+data = helix((1:200)/10, a, b)
+scatterplot3d(data$x,data$y,data$z, type="l")
+data = helix(1:20, a, b)
+data
+1:20
+(1:200)/10
+scatterplot3d(data$x,data$y,data$z)
+helix.unlist <- function(t, a, b) { unlist(helix(t,a,b)) }
+h = as.data.frame(t(sapply(t, helix.unlist, a, b)))
+a = 1; b = 1/5#
+t = 1:100#
+h = as.data.frame(t(sapply(t, helix.unlist, a, b)))
+data
+h
+scatterplot3d(h$x,h$y,h$z)
+scatterplot3d(h$x,h$y,h$z, type="l")
+hh = cbind(h, 1)
+hh
+hh = cbind(h, w = 1)
+hh
+T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)
+f = 10
+T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)
+T
+T %*% t(HH)
+T %*% t(hh)
+hh
+hh2 = T %*% t(hh)
+hh2[1,]
+hh2 = t(T %*% t(hh))
+hh
+hh2
+hh2 = hh %*% t(T)
+T
+dim(hh)
+dim(t(T))
+t
+t(T)
+hh2 = t(T %*% t(hh))
+hh2[1,]
+hh[1,]
+h2c <- function(x) {#
+  return(c(x$x/x$z, x$y/x$z))#
+}
+h2c(hh2[1,])
+hh2[1,]
+hh2[1,]$x
+h2c <- function(x) {#
+  return(c(x[1]/x[3], x[2]/x[3]))#
+}
+h2c(hh2[1,])
+apply(hh2, 1, h2c)
+apply(hh2, 2, h2c)
+apply(hh2, 1, h2c)
+t(apply(hh2, 1, h2c))
+plot(t(apply(hh2, 1, h2c)), type="l")
+f = 100000#
+T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
+hh2 = t(T %*% t(hh))#
+#
+h2c <- function(x) {#
+  return(c(x[1]/x[3], x[2]/x[3]))#
+}#
+plot(t(apply(hh2, 1, h2c)), type="l")
+scatterplot3d(h$x,h$y,h$z, type="l")
+hh
+hh$z = hh$z + 20
+scatterplot3d(h$x,h$y,h$z, type="l")
+h$z = h$z + 20
+scatterplot3d(h$x,h$y,h$z, type="l")
+hh = cbind(h, w = 1)#
+#
+f = 10#
+T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
+hh2 = t(T %*% t(hh))#
+#
+h2c <- function(x) {#
+  return(c(x[1]/x[3], x[2]/x[3]))#
+}#
+plot(t(apply(hh2, 1, h2c)), type="l")
+f = 1#
+T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
+hh2 = t(T %*% t(hh))#
+#
+h2c <- function(x) {#
+  return(c(x[1]/x[3], x[2]/x[3]))#
+}#
+plot(t(apply(hh2, 1, h2c)), type="l")
+h$z = h$z + 200#
+#
+scatterplot3d(h$x,h$y,h$z, type="l")#
+#
+hh = cbind(h, w = 1)#
+#
+f = 1#
+T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
+hh2 = t(T %*% t(hh))#
+#
+h2c <- function(x) {#
+  return(c(x[1]/x[3], x[2]/x[3]))#
+}#
+plot(t(apply(hh2, 1, h2c)), type="l")
+rotatex <- function(theta) {#
+  return(matrix(c(1, 0, 0, 0, cos(theta), sin(theta), 0, -sin(theta), cos(theta)),3,3))#
+}
+rotatex(30*pi/180)
+R = rotatex(30*pi/180)
+h[1,]
+h %*% R
+as.numeric(h) %*% R
+h
+R
+h[1,]
+h[1,] %*% R
+h[1,] %*% as.numeric(R)
+as.matrix(h) %*% R
+hr[1,]
+hr = as.matrix(h) %*% R
+hr[1,]
+names(hr) <- c("x","y","z")
+hr[1,]
+names
+?names
+names
+scatterplot3d(hr$x,hr$y,hr$z, type="l")
+scatterplot3d(hr[,1],hr[,2],hr[,3], type="l")
+hh2[1,]
+hh.camera2 = t(T %*% t(hr))
+T
+hr[1,]
+hhr = cbind(hr, w = 1)#
+hh.camera2 = t(T %*% t(hhr))
+hh.camera2
+plot(t(apply(hh.camera2, 1, h2c)), type="l")
+R = rotatex(30*pi/180)#
+hr = as.matrix(h) %*% R#
+#
+hhr = cbind(hr, w = 1)#
+hh.camera2 = t(T %*% t(hhr))#
+#
+plot(t(apply(hh.camera2, 1, h2c)), type="l")
+f = 1#
+T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
+hh.camera1 = t(T %*% t(hh))#
+#
+h2c <- function(x) {#
+  return(c(x[1]/x[3], x[2]/x[3]))#
+}#
+plot(t(apply(hh.camera1, 1, h2c)), type="l")
+a = 1; b = 1/5#
+t = 1:100#
+h = as.data.frame(t(sapply(t, helix.unlist, a, b)))
+R = rotatex(30*pi/180)#
+hr = as.matrix(h) %*% R#
+#
+hhr = cbind(hr, w = 1)#
+hh.camera2 = t(T %*% t(hhr))#
+#
+plot(t(apply(hh.camera2, 1, h2c)), type="l")
+R = rotatex(30*pi/180)#
+hr = as.matrix(h) %*% R#
+#
+hr[,3] = hr[,3] + 20#
+#
+hhr = cbind(hr, w = 1)#
+hh.camera2 = t(T %*% t(hhr))#
+#
+plot(t(apply(hh.camera2, 1, h2c)), type="l")
+a = 1; b = 1/5#
+t = 1:100#
+h = as.data.frame(t(sapply(t, helix.unlist, a, b)))#
+#
+# look at the projection#
+#plot(h$x,h$z, type="l")#
+ho = h#
+ho$z = ho$z + 20#
+#
+scatterplot3d(ho$x,ho$y,ho$z, type="l")#
+hh = cbind(ho, w = 1)#
+#
+f = 1#
+T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
+hh.camera1 = t(T %*% t(hh))#
+#
+h2c <- function(x) {#
+  return(c(x[1]/x[3], x[2]/x[3]))#
+}#
+plot(t(apply(hh.camera1, 1, h2c)), type="l")
+rotatex <- function(theta) {#
+  return(matrix(c(1, 0, 0, 0, cos(theta), sin(theta), 0, -sin(theta), cos(theta)),3,3))#
+}#
+#
+R = rotatex(30*pi/180)#
+hr = as.matrix(h) %*% R#
+#
+hr[,3] = hr[,3] + 20#
+#
+hhr = cbind(hr, w = 1)#
+hh.camera2 = t(T %*% t(hhr))#
+#
+plot(t(apply(hh.camera2, 1, h2c)), type="l")
+hh.camera1
+hh.camera2
+h
+hh.camera1[1,]
+hh.camera2[1,]
+hh.camera2[100,]
+hh.camera1[100,]
+h2c(hh.camera1[100,])
+c(h2c(hh.camera1[100,]),1)
+hh.camera1[100,]
+c(h2c(hh.camera1[100,]),1)
+h2c(c(h2c(hh.camera1[100,]),1))
+hh.camera1[100,]
+h2c(hh.camera1[100,])
+??sobel
+??hough
+?nan
+?is.nan
+A = data.frame(Length = c(4,3,5,6,3), Width = c(8,NA,2,NA,2), Depth = c(1,1,2,NA,3))
+A
+A = data.frame(Length = c(4,3,5,6,3), Width = c(8,4,2,4,2), Depth = c(1,1,2,2,3))
+A
+A[c(1,3),]
+A[c(1,3),c(2,4)]
+A[,c(2,4,5)]
+A[c(2,4,5),]
+A[,c(1,3)]
+?list
+A["Width"]
+B = list(age = c(5,6,7,5), weather = c("cloudy"), colour = c("green", "white", "white", "blue", "grey"))
+B
+B[1]
+B[[1]]
+B$age
+B[[1]] + 1
+B[1] + 1
+A[c(2,4,5),c(1,3)]
+?print
+print("Hello world")
+t <-c (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,2,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,6,7,8,9)
+hist(t, xlab="Brains per Round", ylab="Frequency of Scores",#
+main="Distribution of Brains per Round", col="gray", breaks=seq(from=-0.5, #
+by=1, to=9.5))
+library('e1071')
+?svm
+data(iris)#
+attach(iris)
+iris[1:10,]
+library(kernlab)
+install.packages(kernlab)
+install.packages('kernlab')
+?glm
+725 + 40
+725 + 40 + 8324 + 9032
+725 + 8324
+a = 725 + 40 + 8324 + 9032
+(725 + 8324)/a
+(725 + 40)/a
+(725)/a
+0.9*0.03 + 0.02*0.97
+0.9*0.03/0.0464
+?sample
+sample(3,100, replace=TRUE, prob=(1,2,3))
+sample(3,100, replace=TRUE, prob=c(1,2,3))
+green = sample(3,100, replace=TRUE, prob=c(1,2,3))
+red = sample(3,100, replace=TRUE, prob=c(3,2,1))
+table(green,red)
+diff(pnorm(c(150,160), mean = 160, sd = 15))
+pnorm(160), mean = 160, sd = 15) - pnorm(150), mean = 160, sd = 15)
+pnorm(160, mean = 160, sd = 15) - pnorm(150, mean = 160, sd = 15)
+x = rnorm(50,1,10)
+y = rnorm(50,1,5)
+var(x + y)
+var(c(x,y))
+?cor
+?t.test
+x = 123
+x = 1:4
+y = 1:4
+summary(lm(x ~ y))
+A  = matrix(runif(20),4,5)
+A
+sum
+apply(A,1,sum)
+apply(A,2,sum)
+A  = matrix(rpois(20, lambda=1),4,5)
+A
+A[1,] > 0
+sum(A[1,] > 0)
+csum = function(x) { sum(x > 0) }
+csum(A[1,] > 0)
+apply(A,1,csum)
+?papply(A,1,csum)
+?apply(A,1,csum)
+??papply(A,1,csum)
+csum = function(x) { s = sum(x > 0); return s; }
+csum = function(x) { s = sum(x > 0); return(s); }
+10/14
+10/14*7.5
+10/14*7.5 + 70
+70 + 8/14*10
+install.packages("slidify")
+require(devtools)
+install.packages(devtools)
+install.packages("devtools")
+install.packages(devtools)
+require(devtools)
+install_github("slidify", "ramnathv")
+install_github("slidifyLibraries", "ramnathv")
+library("slidify")
+setwd("Documents/")
+author("mydeck")
+publish(user = "lapark, repo = "slides", host = "github"")
+publish(user = "lapark, repo = "slides", host = "github")
+publish(user = "lapark", repo = "slides", host = "github")
+publish(user = "lapark", repo = "slides", host = "github")
+publish(user = "lapark", repo = "slides", host = "github")
+publish(user = "lapark", repo = "slides", host = "github")
+?publish(user = "lapark", repo = "slides", host = "github")
+?publish(user = "lapark", repo = "slides", host = "github")
+publish(user = "lapark", repo = "slides", host = "github")
+publish(user = "lapark", repo = "slides", host = 'github')
+publish(user = "lapark", host = 'dropbox')
+publish('mydeck', host = 'dropbox')
