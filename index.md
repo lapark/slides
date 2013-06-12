@@ -33,7 +33,7 @@ This is on slide 2. Do I use dashes to seperate slides?
 How many slides?
 
 1. Hello
-2. Giid-bye
+2. Good-bye
 
 $$s = \sqrt{\frac{{\sum_{i} x_i^2} - n\bar{x}^2}{n-1}}$$
 
