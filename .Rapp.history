@@ -1,252 +1,3 @@
-plot(x,y)
-plot(abs(fft(y)))
-plot(abs(fft(y)), type="l")
-y = exp(-(x-1)^2)
-fz = abs(fft(y))
-plot(fz)
-y = exp(-(x-3)^2) + exp(-(x+3)^2)
-plot(abs(fft(y)), type="l")
-ifft(abs(fft(y))*fz)
-?fft
-fft(abs(fft(y))*fz, inverse=TRUE)
-plot(fft(abs(fft(y))*fz, inverse=TRUE))
-plot(Re(fft(abs(fft(y))*fz, inverse=TRUE)))
-y = exp(-(x-3)^2)
-plot(Re(fft(abs(fft(y))*fz, inverse=TRUE)))
-helix <- function(t, a, b) {#
-  return(list(x = a*cos(t), y = a*sin(t), z = b*t))#
-}
-a = 1
-b = 2
-helix(1:100, a, b)
-library(lattice)
-data = helix(1:100, a, b)
-wireframe(data$z ~ data$x * data$y)
-?persp
-persp(data$x,data$y,data$z)
-library(scatterplot3d)
-install.packages(scatterplot3d)
-install.packages('scatterplot3d')
-library(scatterplot3d)
-?scatterplot3d
-scatterplot3d(data$x,data$y,data$z)
-scatterplot3d(data$x,data$y,data$z, type="l")
-data = helix(1:20, a, b)
-scatterplot3d(data$x,data$y,data$z, type="l")
-data = helix((1:200)/10, a, b)
-scatterplot3d(data$x,data$y,data$z, type="l")
-data = helix(1:20, a, b)
-data
-1:20
-(1:200)/10
-scatterplot3d(data$x,data$y,data$z)
-helix.unlist <- function(t, a, b) { unlist(helix(t,a,b)) }
-h = as.data.frame(t(sapply(t, helix.unlist, a, b)))
-a = 1; b = 1/5#
-t = 1:100#
-h = as.data.frame(t(sapply(t, helix.unlist, a, b)))
-data
-h
-scatterplot3d(h$x,h$y,h$z)
-scatterplot3d(h$x,h$y,h$z, type="l")
-hh = cbind(h, 1)
-hh
-hh = cbind(h, w = 1)
-hh
-T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)
-f = 10
-T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)
-T
-T %*% t(HH)
-T %*% t(hh)
-hh
-hh2 = T %*% t(hh)
-hh2[1,]
-hh2 = t(T %*% t(hh))
-hh
-hh2
-hh2 = hh %*% t(T)
-T
-dim(hh)
-dim(t(T))
-t
-t(T)
-hh2 = t(T %*% t(hh))
-hh2[1,]
-hh[1,]
-h2c <- function(x) {#
-  return(c(x$x/x$z, x$y/x$z))#
-}
-h2c(hh2[1,])
-hh2[1,]
-hh2[1,]$x
-h2c <- function(x) {#
-  return(c(x[1]/x[3], x[2]/x[3]))#
-}
-h2c(hh2[1,])
-apply(hh2, 1, h2c)
-apply(hh2, 2, h2c)
-apply(hh2, 1, h2c)
-t(apply(hh2, 1, h2c))
-plot(t(apply(hh2, 1, h2c)), type="l")
-f = 100000#
-T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
-hh2 = t(T %*% t(hh))#
-#
-h2c <- function(x) {#
-  return(c(x[1]/x[3], x[2]/x[3]))#
-}#
-plot(t(apply(hh2, 1, h2c)), type="l")
-scatterplot3d(h$x,h$y,h$z, type="l")
-hh
-hh$z = hh$z + 20
-scatterplot3d(h$x,h$y,h$z, type="l")
-h$z = h$z + 20
-scatterplot3d(h$x,h$y,h$z, type="l")
-hh = cbind(h, w = 1)#
-#
-f = 10#
-T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
-hh2 = t(T %*% t(hh))#
-#
-h2c <- function(x) {#
-  return(c(x[1]/x[3], x[2]/x[3]))#
-}#
-plot(t(apply(hh2, 1, h2c)), type="l")
-f = 1#
-T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
-hh2 = t(T %*% t(hh))#
-#
-h2c <- function(x) {#
-  return(c(x[1]/x[3], x[2]/x[3]))#
-}#
-plot(t(apply(hh2, 1, h2c)), type="l")
-h$z = h$z + 200#
-#
-scatterplot3d(h$x,h$y,h$z, type="l")#
-#
-hh = cbind(h, w = 1)#
-#
-f = 1#
-T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
-hh2 = t(T %*% t(hh))#
-#
-h2c <- function(x) {#
-  return(c(x[1]/x[3], x[2]/x[3]))#
-}#
-plot(t(apply(hh2, 1, h2c)), type="l")
-rotatex <- function(theta) {#
-  return(matrix(c(1, 0, 0, 0, cos(theta), sin(theta), 0, -sin(theta), cos(theta)),3,3))#
-}
-rotatex(30*pi/180)
-R = rotatex(30*pi/180)
-h[1,]
-h %*% R
-as.numeric(h) %*% R
-h
-R
-h[1,]
-h[1,] %*% R
-h[1,] %*% as.numeric(R)
-as.matrix(h) %*% R
-hr[1,]
-hr = as.matrix(h) %*% R
-hr[1,]
-names(hr) <- c("x","y","z")
-hr[1,]
-names
-?names
-names
-scatterplot3d(hr$x,hr$y,hr$z, type="l")
-scatterplot3d(hr[,1],hr[,2],hr[,3], type="l")
-hh2[1,]
-hh.camera2 = t(T %*% t(hr))
-T
-hr[1,]
-hhr = cbind(hr, w = 1)#
-hh.camera2 = t(T %*% t(hhr))
-hh.camera2
-plot(t(apply(hh.camera2, 1, h2c)), type="l")
-R = rotatex(30*pi/180)#
-hr = as.matrix(h) %*% R#
-#
-hhr = cbind(hr, w = 1)#
-hh.camera2 = t(T %*% t(hhr))#
-#
-plot(t(apply(hh.camera2, 1, h2c)), type="l")
-f = 1#
-T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
-hh.camera1 = t(T %*% t(hh))#
-#
-h2c <- function(x) {#
-  return(c(x[1]/x[3], x[2]/x[3]))#
-}#
-plot(t(apply(hh.camera1, 1, h2c)), type="l")
-a = 1; b = 1/5#
-t = 1:100#
-h = as.data.frame(t(sapply(t, helix.unlist, a, b)))
-R = rotatex(30*pi/180)#
-hr = as.matrix(h) %*% R#
-#
-hhr = cbind(hr, w = 1)#
-hh.camera2 = t(T %*% t(hhr))#
-#
-plot(t(apply(hh.camera2, 1, h2c)), type="l")
-R = rotatex(30*pi/180)#
-hr = as.matrix(h) %*% R#
-#
-hr[,3] = hr[,3] + 20#
-#
-hhr = cbind(hr, w = 1)#
-hh.camera2 = t(T %*% t(hhr))#
-#
-plot(t(apply(hh.camera2, 1, h2c)), type="l")
-a = 1; b = 1/5#
-t = 1:100#
-h = as.data.frame(t(sapply(t, helix.unlist, a, b)))#
-#
-# look at the projection#
-#plot(h$x,h$z, type="l")#
-ho = h#
-ho$z = ho$z + 20#
-#
-scatterplot3d(ho$x,ho$y,ho$z, type="l")#
-hh = cbind(ho, w = 1)#
-#
-f = 1#
-T = matrix(c(f,0,0,0,f,0,0,0,1,0,0,0),3,4)#
-hh.camera1 = t(T %*% t(hh))#
-#
-h2c <- function(x) {#
-  return(c(x[1]/x[3], x[2]/x[3]))#
-}#
-plot(t(apply(hh.camera1, 1, h2c)), type="l")
-rotatex <- function(theta) {#
-  return(matrix(c(1, 0, 0, 0, cos(theta), sin(theta), 0, -sin(theta), cos(theta)),3,3))#
-}#
-#
-R = rotatex(30*pi/180)#
-hr = as.matrix(h) %*% R#
-#
-hr[,3] = hr[,3] + 20#
-#
-hhr = cbind(hr, w = 1)#
-hh.camera2 = t(T %*% t(hhr))#
-#
-plot(t(apply(hh.camera2, 1, h2c)), type="l")
-hh.camera1
-hh.camera2
-h
-hh.camera1[1,]
-hh.camera2[1,]
-hh.camera2[100,]
-hh.camera1[100,]
-h2c(hh.camera1[100,])
-c(h2c(hh.camera1[100,]),1)
-hh.camera1[100,]
-c(h2c(hh.camera1[100,]),1)
-h2c(c(h2c(hh.camera1[100,]),1))
-hh.camera1[100,]
 h2c(hh.camera1[100,])
 ??sobel
 ??hough
@@ -335,26 +86,314 @@ csum = function(x) { s = sum(x > 0); return(s); }
 10/14*7.5
 10/14*7.5 + 70
 70 + 8/14*10
-install.packages("slidify")
-require(devtools)
-install.packages(devtools)
-install.packages("devtools")
-install.packages(devtools)
-require(devtools)
-install_github("slidify", "ramnathv")
-install_github("slidifyLibraries", "ramnathv")
-library("slidify")
-setwd("Documents/")
-author("mydeck")
-publish(user = "lapark, repo = "slides", host = "github"")
-publish(user = "lapark, repo = "slides", host = "github")
-publish(user = "lapark", repo = "slides", host = "github")
-publish(user = "lapark", repo = "slides", host = "github")
-publish(user = "lapark", repo = "slides", host = "github")
-publish(user = "lapark", repo = "slides", host = "github")
-?publish(user = "lapark", repo = "slides", host = "github")
-?publish(user = "lapark", repo = "slides", host = "github")
-publish(user = "lapark", repo = "slides", host = "github")
-publish(user = "lapark", repo = "slides", host = 'github')
-publish(user = "lapark", host = 'dropbox')
-publish('mydeck', host = 'dropbox')
+n = 10
+p = 0.51
+1 - pbinom(5, n, p)
+n = 100
+1 - pbinom(5, n, p)
+1 - pbinom(n/2, n, p)
+plot(pbinom(0:10, n, p))
+plot(dbinom(0:10, n, p))
+m
+n
+n = 10
+plot(dbinom(0:10, n, p))
+n*p
+n = 100
+plot(dbinom(0:n, n/2, p))
+n
+p
+n/2
+plot(dbinom(0:n, n, p))
+setwd("Projects/rao/iVAT-missing/")
+iris
+labels(iris)
+iris[-Species]
+?subset
+subset(iris, drop = Species)
+subset(iris, select = -Species)
+labels(subset(iris, select = -Species))
+subset(iris, select = -Species)
+source("iVAT.r")#
+#
+# set the number of missing values#
+missing = 200#
+X = cbind(rnorm(50, mean=10, sd = 5),rnorm(50, mean=10, sd = 5))#
+Y = cbind(rnorm(50, mean=110, sd = 5),rnorm(50, mean=110, sd = 5))#
+Z = rbind(X,Y)#
+#
+Z = subset(iris, select = -Species)#
+#
+# randomise positions#
+d = dim(Z)#
+#Z = Z[sample(d[1], d[1], replace = FALSE),]#
+#
+# compute distance matrix#
+D = as.matrix(dist(Z))
+dim(D)
+V = iVAT(D)
+image(V)
+image(V$RiV)
+image(V$RV)
+image(V$RiV)
+source("simple-data.r")
+source("simple-data.r")
+source("simple-data.r")
+source("simple-data.r")
+source("simple-data.r")
+source("simple-data.r")
+source("simple-data.r")
+source("simple-data.r")
+labels(iris)
+setwd("~/Documents/mydeck/")
+library(slidify)
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify('slides.Rmd', options = list(framework = 'deck.js', theme = 'swiss', transition = 'horizontal-slide'))
+slidify('slides.Rmd', options = list(framework = 'deck.js', theme = 'swiss', transition = 'horizontal-slide'))
+?slidify
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+norm
+?norm
+vnorm
+yu
+truth
+prediction.error <- function(D, E, replace.method) {#
+#
+  points = find.missing(E)#
+  truth = sapply(points, value.at.position, D)#
+#
+  y = compute.missing(E,replace.method)#
+  return(vnorm(y,truth))#
+#
+}
+prediction.error(D, E, uniform.predict.point)
+vnorm <- function(x,y) {#
+  return(sqrt((x - y)^2))#
+}
+prediction.error(D, E, uniform.predict.point)
+vnorm <- function(x,y) {#
+  return(sqrt(sum((x - y)^2)))#
+}
+prediction.error(D, E, uniform.predict.point)
+prediction.error(D, E, uniform.predict.point)
+prediction.error(D, E, uniform.predict.point)
+prediction.error(D, E, uniform.predict.point)
+prediction.error(D, E, uniform.predict.point)
+prediction.error(D, E, uniform.predict.point)
+prediction.error(D, E, uniform.predict.point)
+prediction.error(D, E, ks.predict.point)
+prediction.error(D, E, lm.predict.point)
+rms <- function(x,y) {#
+  return(sqrt(mean((x - y)^2)))#
+}
+prediction.error <- function(D, E, replace.method) {#
+#
+  points = find.missing(E)#
+  truth = sapply(points, value.at.position, D)#
+#
+  y = compute.missing(E,replace.method)#
+  return(rms(y,truth))#
+#
+}
+prediction.error(D, E, lm.predict.point)
+range(D)
+range(D)
+range(D)
+prediction.error(D, E, lm.predict.point)
+prediction.error(D, E, lm.predict.point)
+prediction.error(D, E, ks.predict.point)
+prediction.error(D, E, ks.predict.point)
+prediction.error(D, E, ks.predict.point)
+?sapply
+replicate(10, prediction.error(D, E, ks.predict.point))
+replicate(10, prediction.error(D, E, uniform.predict.point))
+prediction.error <- function(D, replace.method) {#
+#
+  d = dim(D)#
+  point = random.points(d, missing)#
+  E = D#
+  E[point] = NA#
+#
+  points = find.missing(E)#
+  truth = sapply(points, value.at.position, D)#
+#
+  y = compute.missing(E,replace.method)#
+  return(rms(y,truth))#
+#
+}
+replicate(10, prediction.error(D, uniform.predict.point))
+error.u = replicate(100, prediction.error(D, uniform.predict.point))
+hist(error.u)
+error.b = replicate(100, prediction.error(D, bootstrap.predict.point))
+hist(error.b)
+error.l = replicate(100, prediction.error(D, lm.predict.point))
+missing
+d
+replicate(5, random.points(d, 4))
+replicate(5, random.points(d, 4))[1]
+replicate(5, random.points(d, 4))[1,,]
+replicate(5, random.points(d, 4))[,,1]
+point.set <- function(sample.size, missing) {#
+  return(replicate(sample.size, random.points(d, missing)))#
+}
+point.set <- function(sample.size, missing, d) {#
+  return(replicate(sample.size, random.points(d, missing)))#
+}
+pset = point.set(sample.size = 100, missing, d)
+pset[,,1]
+dim(pset)
+prediction.error <- function(D, replace.method, point) {#
+#
+  E = D#
+  E[point] = NA#
+#
+  points = find.missing(E)#
+  truth = sapply(points, value.at.position, D)#
+#
+  y = compute.missing(E,replace.method)#
+  return(rms(y,truth))#
+#
+}
+prediction.error <- function(point, D, replace.method) {#
+#
+  E = D#
+  E[point] = NA#
+#
+  points = find.missing(E)#
+  truth = sapply(points, value.at.position, D)#
+#
+  y = compute.missing(E,replace.method)#
+  return(rms(y,truth))#
+#
+}
+error.u2 = apply(pset, 3, prediction.error, D, uniform.predict.point)
+length(error.u2)
+hist(error.u2)
+error.u2
+error.b = apply(pset, 3, prediction.error, D, bootstrap.predict.point)
+hist(error.b)
+error.l = apply(pset, 3, prediction.error, D, lm.predict.point)
+warnings()
+error.l
+hist(error.l)
+error.k = apply(pset, 3, prediction.error, D, ks.predict.point)
+hist(error.k)
+error.k
+summary(error.k)
+summary(error.l)
+summary(error.u)
+summary(error.b)
+error.k - error.u
+range(error.k - error.u)
+pset = point.set(sample.size = 100, missing, d)#
+error.u = apply(pset, 3, prediction.error, D, uniform.predict.point)#
+error.b = apply(pset, 3, prediction.error, D, bootstrap.predict.point)#
+error.l = apply(pset, 3, prediction.error, D, lm.predict.point)#
+error.k = apply(pset, 3, prediction.error, D, ks.predict.point)
+hist(error.u)
+hist(error.b)
+hist(error.l)
+hist(error.k)
+summary(error.l)
+summary(error.u)
+hist(error.k)
+par(mfrow = c(2,2))#
+hist(error.u, main = "MSE of Replacement: Uniform")#
+hist(error.b, main = "MSE of Replacement: Bootstrap")#
+hist(error.l, main = "MSE of Replacement: Linear")#
+hist(error.k, main = "MSE of Replacement: Kernel")
+summary(list(Uniform = error.u, Bootstrap = error.b, Linear = error.l, Kernel = error.k))
+summary(error.u)
+sapply(list(Uniform = error.u, Bootstrap = error.b, Linear = error.l, Kernel = error.k), summary)
+pdf("iVAT-missing-values-error.pdf", width = 10, height = 10)#
+par(mfrow = c(2,2))#
+hist(error.u, main = "MSE of Replacement: Uniform")#
+hist(error.b, main = "MSE of Replacement: Bootstrap")#
+hist(error.l, main = "MSE of Replacement: Linear")#
+hist(error.k, main = "MSE of Replacement: Kernel")#
+dev.off()
+lm.predict.point <- function(p, E, params = NULL) {#
+#
+  na.rows = which(is.na(apply(E,1,sum)))#
+  na.cols = which(is.na(apply(E,2,sum)))#
+#
+  X = E[-na.rows,]#
+  X = t(X[,-c(na.cols,p[2])])#
+  Y = E[p[1],-c(na.cols,p[2])]#
+#
+  # need to make sure that the number of variables is not more than the number of points#
+  S = svd(X)#
+  X = X %*% S$v#
+  dx = dim(X)[2]#
+  X = X[,1:(dx -2)]#
+#
+  m = lm(Y ~ X)#
+#
+  x = E[-na.rows,p[2]]#
+  x = x %*% S$v#
+  x = x[1:(dx -2)]#
+  x = data.frame(X=I(matrix(x, nrow=1)))#
+  z = predict(m,newdata=x)#
+  names(z) = NULL#
+  return(z)#
+}
+error.l = apply(pset, 3, prediction.error, D, lm.predict.point)
+summary(error.l)
+pdf("iVAT-missing-values-error.pdf", width = 10, height = 10)#
+par(mfrow = c(2,2))#
+hist(error.u, main = "MSE of Replacement: Uniform")#
+hist(error.b, main = "MSE of Replacement: Bootstrap")#
+hist(error.l, main = "MSE of Replacement: Linear")#
+hist(error.k, main = "MSE of Replacement: Kernel")#
+dev.off()#
+#
+summary(list(Uniform = error.u, Bootstrap = error.b, Linear = error.l, Kernel = error.k))
+sapply(list(Uniform = error.u, Bootstrap = error.b, Linear = error.l, Kernel = error.k), summary)
+pdf("iVAT-missing-values-error.pdf", width = 10, height = 10)#
+par(mfrow = c(2,2))#
+hist(error.u, main = "MSE of Replacement: Uniform")#
+hist(error.b, main = "MSE of Replacement: Bootstrap")#
+hist(error.l, main = "MSE of Replacement: Linear Model")#
+hist(error.k, main = "MSE of Replacement: Kernel Smoothing")#
+dev.off()
+pdf("iVAT-missing-values-error.pdf", width = 10, height = 10)#
+par(mfrow = c(2,2))#
+hist(error.u, main = "MSE of Replacement: Uniform", xlab = "MSE")#
+hist(error.b, main = "MSE of Replacement: Bootstrap", xlab = "MSE")#
+hist(error.l, main = "MSE of Replacement: Linear Model", xlab = "MSE")#
+hist(error.k, main = "MSE of Replacement: Kernel Smoothing", xlab = "MSE")#
+dev.off()
+pdf("iVAT-missing-values-error.pdf", width = 10, height = 10)#
+par(mfrow = c(2,2))#
+hist(log(error.u), main = "MSE of Replacement: Uniform", xlab = "MSE")#
+hist(log(error.b), main = "MSE of Replacement: Bootstrap", xlab = "MSE")#
+hist(log(error.l), main = "MSE of Replacement: Linear Model", xlab = "MSE")#
+hist(log(error.k), main = "MSE of Replacement: Kernel Smoothing", xlab = "MSE")#
+dev.off()
+pdf("iVAT-missing-values-error.pdf", width = 10, height = 10)#
+par(mfrow = c(2,2))#
+hist(error.u, main = "MSE of Replacement: Uniform", xlab = "MSE")#
+hist(error.b, main = "MSE of Replacement: Bootstrap", xlab = "MSE")#
+hist(error.l, main = "MSE of Replacement: Linear Model", xlab = "MSE")#
+hist(error.k, main = "MSE of Replacement: Kernel Smoothing", xlab = "MSE")#
+dev.off()
+t.test(error.u, error.b, paired = TRUE, alternative="g")
+t.test(error.b, error.l, paired = TRUE, alternative="g")
+t.test(error.l, error.k, paired = TRUE, alternative="g")
